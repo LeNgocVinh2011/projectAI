@@ -1,0 +1,26 @@
+{
+  "model_params": {
+    "model_dir": "models/run00",
+    "weight_decay": 1e-3,
+    "score_threshold": 0.1, "iou_threshold": 0.3, "max_boxes": 300,
+
+    "localization_loss_weight": 1.5, "classification_loss_weight": 1.0,
+
+    "loss_to_use": "classification",
+    "loc_loss_weight": 0.0, "cls_loss_weight": 1.0,
+    "num_hard_examples": 5000, "nms_threshold": 0.99,
+    "max_negatives_per_positive": 5, "min_negatives_per_image": 25,
+
+    "lr_boundaries": [70000, 120000, 170000],
+    "lr_values": [0.005,  0.001, 0.0005, 0.0001]
+  },
+																																																																																													
+  "input_pipeline_params": {
+    "image_size": [384, 384],
+    "batch_size": 32,
+    "train_dataset": "data/train_shards/",
+    "val_dataset": "data/val_shards/",    
+    "model_name": "hdu-pd.pb",
+    "num_steps": 200000
+  }
+}
