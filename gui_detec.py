@@ -45,15 +45,25 @@ class App(customtkinter.CTk):
         self.frame_left.grid_rowconfigure(11, minsize=10)
 
         self.frame_info = customtkinter.CTkFrame(master=self.frame_right)
-        self.frame_info.grid(row=2, column=0, columnspan=3, rowspan=8, pady=20, padx=20, sticky="nsew")
+        self.frame_info.grid(row=2, column=0, columnspan=4, rowspan=8, pady=20, padx=20, sticky="nsew")
 
         self.label_info_1 = customtkinter.CTkLabel(master=self.frame_info,
-                                                   text="Display image",
+                                                   text="Design By Le Ngoc Vinh\n" +
+                                                        "Software License By HDU IT 2022\n" +
+                                                        "Version 1.0.0 Beta",
                                                    height=100,
-                                                   fg_color=("white", "gray38"),
+                                                   fg_color=("white", "gray38"),  # <- custom tuple-color
                                                    justify=tkinter.LEFT)
-
         self.label_info_1.grid(column=0, row=0, sticky="nwe", padx=15, pady=15)
+
+        self.progressbar = customtkinter.CTkProgressBar(master=self.frame_info)
+        self.progressbar.grid(row=1, column=0, sticky="ew", padx=15, pady=15)
+        self.slider_1 = customtkinter.CTkSlider(master=self.frame_info,
+                                                from_=0,
+                                                to=1,
+                                                number_of_steps=3,
+                                                command=self.progressbar.set)
+        self.slider_1.grid(row=4, column=0, columnspan=2, pady=10, padx=20, sticky="we")
 
         self.label_1 = customtkinter.CTkLabel(master=self.frame_left,
                                               text="Video Detection",
@@ -110,7 +120,7 @@ class App(customtkinter.CTk):
                                                    placeholder_text="Seconds...")
         self.entrySeconds.grid(row=1, column=1, columnspan=1, padx=20, sticky="w")
 
-        self.switch_themes.select()
+        # self.switch_themes.select()
         self.entrySeconds.configure(state=tkinter.DISABLED)
         self.checkboxAllow.configure(text="Filter video by seconds")
 

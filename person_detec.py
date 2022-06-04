@@ -51,6 +51,7 @@ def draw_boxes_on_image(image, boxes, scores, FPS):
     k2 = 1.0*show_h/im_detect_hi
 
     image_copy = Image.fromarray(image_copy)
+
     draw = ImageDraw.Draw(image_copy, 'RGBA')
     for b, s in zip(boxes, scores):
         ymin, xmin, ymax, xmax = b
